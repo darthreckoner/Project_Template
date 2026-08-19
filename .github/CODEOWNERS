@@ -1,0 +1,7 @@
+# Replace every placeholder with the human repository owner's GitHub username.
+# CODEOWNERS expresses review ownership; enforcement requires a GitHub ruleset or branch protection.
+
+/docs/VISION.md                 @REPLACE-WITH-GITHUB-USERNAME
+/docs/REQUIREMENTS.md           @REPLACE-WITH-GITHUB-USERNAME
+/docs/decisions/accepted/**     @REPLACE-WITH-GITHUB-USERNAME
+/plans/completed/**             @REPLACE-WITH-GITHUB-USERNAME
