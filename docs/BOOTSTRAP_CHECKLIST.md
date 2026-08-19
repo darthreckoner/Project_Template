@@ -31,4 +31,18 @@ Keep `Not applicable` decisions brief and explicit.
 - [ ] Require code-owner review where technically meaningful.
 - [ ] If a strict human gate is needed, use a distinct AI/automation identity and human reviewer.
 
+## GitHub Protection Verification
+
+- [x] Pull requests required for `main`
+- [x] CI status check configured
+- [x] Governance CI verified to pass on valid changes
+- [x] Governance CI verified to fail on invalid governance state
+- [ ] Required status check enforcement verified
+  - Current state: repository is private and ruleset enforcement is unavailable on the current GitHub plan.
+  - Resolution options:
+    - Make this repository public, or
+    - Use a GitHub plan that supports ruleset enforcement for private repositories.
+- [ ] CODEOWNERS approval enforcement verified
+  - Enable only when platform support and a distinct reviewer/automation identity make this practical.
+
 Record completion in the first project-specific PR or another durable project record.
