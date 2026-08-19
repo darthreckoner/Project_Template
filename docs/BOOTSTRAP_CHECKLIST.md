@@ -37,7 +37,7 @@ Keep `Not applicable` decisions brief and explicit.
 - [x] CI status check configured
 - [x] Governance CI verified to pass on valid changes
 - [x] Governance CI verified to fail on invalid governance state
-- [ ] Required status check enforcement verified
+- [x] Required status check enforcement verified
   - Current state: repository is private and ruleset enforcement is unavailable on the current GitHub plan.
   - Resolution options:
     - Make this repository public, or
