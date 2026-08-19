@@ -23,7 +23,7 @@ Keep `Not applicable` decisions brief and explicit.
 
 ## GitHub Controls
 
-- [ ] Personalize `.github/CODEOWNERS`.
+- [x] Personalize `.github/CODEOWNERS`.
 - [ ] Establish the default branch.
 - [ ] Enable the PR workflow where appropriate.
 - [ ] Configure a branch-protection rule or GitHub ruleset.

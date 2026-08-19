@@ -1,7 +1,9 @@
-# Replace every placeholder with the human repository owner's GitHub username.
-# CODEOWNERS expresses review ownership; enforcement requires a GitHub ruleset or branch protection.
+# Default owner for repository changes
+* @darthreckoner
 
-/docs/VISION.md                 @REPLACE-WITH-GITHUB-USERNAME
-/docs/REQUIREMENTS.md           @REPLACE-WITH-GITHUB-USERNAME
-/docs/decisions/accepted/**     @REPLACE-WITH-GITHUB-USERNAME
-/plans/completed/**             @REPLACE-WITH-GITHUB-USERNAME
+# Governance-sensitive files
+/.github/CODEOWNERS @darthreckoner
+/docs/VISION.md @darthreckoner
+/docs/REQUIREMENTS.md @darthreckoner
+/docs/decisions/accepted/ @darthreckoner
+/plans/completed/ @darthreckoner
