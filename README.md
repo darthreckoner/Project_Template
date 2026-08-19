@@ -1,5 +1,5 @@
 # AI-Assisted Engineering Repository Template
-
+a tiny change
 A reusable GitHub repository template for solo developers who use AI-assisted code while retaining
 durable intent, explicit human decisions, deterministic validation, and professional engineering
 discipline. The repository is institutional memory; chats and agent threads are temporary working
