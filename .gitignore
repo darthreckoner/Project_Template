@@ -18,6 +18,10 @@ Desktop.ini
 !.env.example
 *.local
 *.secret
+*.pem
+*.key
+*.pfx
+*.p12
 
 # Generic caches, coverage, and generated scratch output
 __pycache__/
