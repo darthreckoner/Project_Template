@@ -1,12 +1,20 @@
 # Architecture
 
-> **Bootstrap status:** Placeholder. This document describes the current accepted conceptual system,
-> not every implementation detail. Human authorization is required for semantic changes to accepted
-> architecture.
-
 ## System Overview
 
-[Describe the system and its main responsibilities.]
+Sources
+   ↓
+Synthesis
+   ↓
+Knowledge Modules
+   ↓
+Tone-Building Playbook
+   ↓
+Experiment
+   ↓
+Observed Result
+   ↓
+Experimental Knowledge
 
 ## Components
 
