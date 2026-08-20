@@ -1,28 +1,39 @@
 # Vision
 
-> **Bootstrap status:** Placeholder. Human authorization is required before this becomes accepted
-> project intent and for later semantic changes.
-
 ## Problem
 
-[What real problem should this project address?]
+Tone creation currently depends too much on scattered videos,
+manual experimentation, downloaded patches, and memory. It also
+requires a level of skill in audio engineering that not all users
+possess. 
 
 ## Intended User / Audience
 
-[Who experiences the problem or uses the outcome?]
+Guitar players and owners of Boss Katana amps. Particularly the 
+Katana MkII Artist.
 
 ## Desired Outcome
 
-[What durable outcome should exist if the project succeeds?]
+Describe a reference guitar tone and use structured Katana
+knowledge plus experimentation to intelligently build a patch.
+
+Alternatively, be able to upload a audio file to use as the reference.
 
 ## Core Principles
 
-- [Principle that should guide tradeoffs]
+- Explain why settings are changed.
+- Preserve successful and failed experiments.
+- Separate documented facts from interpretation.
+- Prefer synthesized knowledge over raw source loading.
+- Keep human listening/testing central.
 
 ## Non-Goals
 
-- [Explicit outcome, audience, or capability this project will not pursue]
+- Build a DAW.
+- Automatically identify every guitar effect perfectly from audio.
+- Replace Boss Tone Studio.
+- Build a full software application before the knowledge system is useful.
 
 ## Success Definition
 
-[How will a human determine that the desired outcome was achieved?]
+The user should be satisfied that the created patch sounds close to the targeted tone.
