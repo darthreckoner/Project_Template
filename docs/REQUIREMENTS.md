@@ -1,21 +1,10 @@
 # Requirements
 
-REQ-001
-The project shall preserve durable Katana MkII / Tone Studio knowledge.
+> **Bootstrap status:** Placeholder. Requirements describe accepted, eventually verifiable project
+> behavior. Human authorization is required to accept or semantically change them.
 
-REQ-002
-Source material shall remain distinguishable from synthesized knowledge.
-
-REQ-003
-The system shall support building repeatable tone recipes.
-
-REQ-004
-Tone experiments shall be recordable with settings, observations,
-and outcomes.
-
-REQ-005
-AI workflows shall retrieve relevant knowledge selectively rather
-than ingesting all source material by default.
+Keep requirements concise, uniquely identified, and linked to evidence. Proposed behavior must not
+be represented as accepted merely because it appears in conversation or a Draft plan.
 
 ## Requirement Template
 
