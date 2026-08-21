@@ -7,6 +7,7 @@ It is the canonical, tool-neutral policy; this file only routes work.
   `docs/REQUIREMENTS.md`.
 - System design: read `docs/ARCHITECTURE.md`, then the decision index before any relevant ADR.
 - Work covered by a planning trigger: follow `docs/PLANNING_PLAYBOOK.md` and the plan index.
+- Security-sensitive work: follow `docs/SECURITY_RULES.md`.
 - Implementation and validation: follow `docs/DEVELOPMENT_WORKFLOW.md`.
 - New folders, infrastructure, dependencies, or tool adapters: read
   `docs/REPOSITORY_POLICY.md` first.

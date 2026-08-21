@@ -22,6 +22,7 @@ REQUIRED_FILES = (
     "docs/DEVELOPMENT_WORKFLOW.md",
     "docs/PLANNING_PLAYBOOK.md",
     "docs/REPOSITORY_POLICY.md",
+    "docs/SECURITY_RULES.md",
     "docs/decisions/README.md",
     "docs/decisions/ADR-TEMPLATE.md",
     "plans/README.md",
@@ -29,6 +30,7 @@ REQUIRED_FILES = (
     "scripts/check_governance.py",
     ".github/CODEOWNERS",
     ".github/workflows/ci.yml",
+    ".github/dependabot.yml",
     ".github/pull_request_template.md",
 )
 

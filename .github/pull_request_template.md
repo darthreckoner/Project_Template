@@ -12,6 +12,7 @@
 
 - Tests / commands run: [Exact commands and result]
 - Documentation impact: [None or files updated]
+- Security impact: [None / describe]
 - Risks / follow-ups: [None or concise details]
 
 ## Checklist

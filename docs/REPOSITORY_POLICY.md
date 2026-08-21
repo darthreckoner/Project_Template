@@ -18,6 +18,23 @@ instructions, durable project state, deterministic validation, and human approva
 
 ## Optional Modules
 
+### Security Baseline and Capability-Triggered Controls
+
+The mandatory security baseline covers secret protection, dependency governance, least-privilege
+automation, and security authority rules. Reevaluate activation conditions as the repository
+evolves, not only during bootstrap:
+
+- An executable application language is introduced: evaluate and activate applicable CodeQL
+  scanning.
+- An additional supported language is introduced: extend applicable scanning.
+- A container is introduced: evaluate a container-security module.
+- A public web or API surface is introduced: evaluate application-security controls.
+- A cloud deployment is introduced: evaluate deployment and IAM controls.
+- Distributed artifacts are introduced: evaluate signing, SBOM, and provenance controls.
+
+These are evaluation triggers, not instructions to add deferred modules before the corresponding
+capability exists.
+
 ### `knowledge/`
 
 Activate when durable domain information is repeatedly required, external sources need distilling,

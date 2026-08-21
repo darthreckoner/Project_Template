@@ -23,7 +23,7 @@ Keep `Not applicable` decisions brief and explicit.
 
 ## GitHub Controls
 
-- [x] Personalize `.github/CODEOWNERS`.
+- [ ] Personalize `.github/CODEOWNERS`.
 - [ ] Establish the default branch.
 - [ ] Enable the PR workflow where appropriate.
 - [ ] Configure a branch-protection rule or GitHub ruleset.
@@ -31,18 +31,28 @@ Keep `Not applicable` decisions brief and explicit.
 - [ ] Require code-owner review where technically meaningful.
 - [ ] If a strict human gate is needed, use a distinct AI/automation identity and human reviewer.
 
-## GitHub Protection Verification
+## Security and GitHub Protection Verification
 
-- [x] Pull requests required for `main`
-- [x] CI status check configured
-- [x] Governance CI verified to pass on valid changes
-- [x] Governance CI verified to fail on invalid governance state
-- [x] Required status check enforcement verified
-  - Current state: repository is private and ruleset enforcement is unavailable on the current GitHub plan.
-  - Resolution options:
-    - Make this repository public, or
-    - Use a GitHub plan that supports ruleset enforcement for private repositories.
-- [ ] CODEOWNERS approval enforcement verified
-  - Enable only when platform support and a distinct reviewer/automation identity make this practical.
+For settings dependent on repository visibility or GitHub plan, record one of `Enabled`, `Not
+supported`, or `Not applicable` with a brief reason. Do not represent an unsupported setting as
+enforced.
+
+- [ ] Secret scanning: Enabled / Not supported / Not applicable with reason.
+- [ ] Push protection: Enabled / Not supported / Not applicable with reason.
+- [ ] Dependency graph: Enabled / Not supported / Not applicable with reason.
+- [ ] Dependabot alerts: Enabled / Not supported / Not applicable with reason.
+- [ ] Dependabot security updates: Enabled / Not supported / Not applicable with reason.
+- [ ] GitHub Actions use explicit least-privilege permissions.
+- [ ] Third-party Actions use immutable full commit SHAs.
+- [ ] Security-sensitive files are covered by CODEOWNERS.
+- [ ] Applicable code scanning has been evaluated; activate it when an executable application
+  language warrants it.
+- [ ] Passing secret scan verified.
+- [ ] Controlled failing secret scan verified through an unmerged PR or CI test branch: add a
+  temporary file containing `ghp_` followed by 36 zero digits, verify the `secret-scan` job fails,
+  then delete the branch. This is a nonfunctional pattern-only fixture, never a real credential.
+- [ ] Pull-request and required-status-check enforcement verified where supported.
+- [ ] CODEOWNERS approval enforcement verified where supported and meaningful with a distinct
+  reviewer/automation identity.
 
 Record completion in the first project-specific PR or another durable project record.

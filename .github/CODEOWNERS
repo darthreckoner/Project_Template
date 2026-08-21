@@ -7,3 +7,6 @@
 /docs/REQUIREMENTS.md @darthreckoner
 /docs/decisions/accepted/ @darthreckoner
 /plans/completed/ @darthreckoner
+/docs/SECURITY_RULES.md @darthreckoner
+/.github/workflows/ @darthreckoner
+/.github/dependabot.yml @darthreckoner
