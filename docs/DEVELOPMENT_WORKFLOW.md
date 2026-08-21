@@ -25,6 +25,8 @@ During template bootstrap, governance validation is the only configured command:
 - **TYPE CHECK** — Run: `NOT CONFIGURED (activate if applicable)`
 - **TEST** — Run: `NOT CONFIGURED (activate if applicable)`
 - **BUILD** — Run: `NOT CONFIGURED (activate if applicable)`
+- **SECURITY** — Run: configured security checks when applicable; current template CI includes a
+  routine secret scan.
 - **FULL APPLICATION VALIDATION** — Run: `NOT CONFIGURED`
 
 `APPLICATION_VALIDATION: NOT_CONFIGURED`
@@ -45,6 +47,7 @@ Requirements impact: None / Updated: ...
 Architecture impact: None / Updated: ...
 ADR impact: None / Added: ...
 Knowledge impact: None / Updated: ...
+Security impact: None / Updated: ...
 ```
 
 A diff alone does not establish semantic consistency. Check each impact against accepted project
