@@ -23,6 +23,8 @@ REQUIRED_FILES = (
     "docs/PLANNING_PLAYBOOK.md",
     "docs/REPOSITORY_POLICY.md",
     "docs/SECURITY_RULES.md",
+    "docs/agents/skill-governance.md",
+    "docs/agents/domain.md",
     "docs/decisions/README.md",
     "docs/decisions/ADR-TEMPLATE.md",
     "plans/README.md",
@@ -184,6 +186,22 @@ def check_application_validation(errors: list[str]) -> None:
         )
 
 
+def check_skill_governance_policy(errors: list[str]) -> None:
+    policy = read_text(ROOT / "docs/agents/skill-governance.md", errors)
+    required_phrases = (
+        "available for use by default",
+        "subordinate to the repository's canonical governance",
+        "material conflict",
+        "stop and escalate",
+    )
+    for phrase in required_phrases:
+        if phrase not in policy:
+            errors.append(
+                "docs/agents/skill-governance.md: missing required policy phrase "
+                f"{phrase!r}"
+            )
+
+
 def main() -> int:
     errors: list[str] = []
     check_structure(errors)
@@ -199,6 +217,7 @@ def main() -> int:
     check_completed_plan_metadata(errors)
     check_index_entries(errors)
     check_application_validation(errors)
+    check_skill_governance_policy(errors)
 
     if errors:
         for error in errors:

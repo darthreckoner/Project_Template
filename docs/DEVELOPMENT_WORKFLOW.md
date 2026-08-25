@@ -2,16 +2,19 @@
 
 ## Standard Flow
 
-1. Understand the task and its authority.
-2. Evaluate every planning trigger in `ENGINEERING_RULES.md`.
-3. If triggered, create or use a formal plan and obtain required human approval.
-4. Inspect only relevant repository context.
-5. Implement the smallest adequate change without speculative architecture.
-6. Run the applicable local validation commands below.
-7. Review the diff for scope, security, and unintended files.
-8. Confirm CI passes.
-9. Complete closure and Documentation Impact Review.
-10. Merge through the configured repository controls.
+1. Understand the task and read the relevant accepted intent documents when the task might affect
+   them.
+2. Classify the work as Level 0, Level 1, or Level 2 using `ENGINEERING_RULES.md`.
+3. If classification is uncertain, escalate rather than downgrade.
+4. For Level 1, record the bounded decision note. For Level 2, create or use a formal plan and
+   obtain required human approval.
+5. Inspect only relevant repository context.
+6. Implement the smallest adequate change without speculative architecture.
+7. Run the applicable local validation commands below.
+8. Review the diff for scope, security, and unintended files.
+9. Confirm CI passes.
+10. Complete closure and Documentation Impact Review.
+11. Merge through the configured repository controls.
 
 Never knowingly hide a validation failure or report completion while a required check fails.
 
@@ -49,6 +52,11 @@ ADR impact: None / Added: ...
 Knowledge impact: None / Updated: ...
 Security impact: None / Updated: ...
 ```
+
+For every completed change, also record the changed files or system areas, confirm that applicable
+requirements remain satisfied, synchronize architecture or ADR records when applicable, and obtain
+human confirmation before closure. Level 0 and Level 1 work do not require a formal plan unless a
+planning trigger applies.
 
 A diff alone does not establish semantic consistency. Check each impact against accepted project
 truth and update only with the required authorization.

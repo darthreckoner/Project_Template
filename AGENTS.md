@@ -11,6 +11,24 @@ It is the canonical, tool-neutral policy; this file only routes work.
 - Implementation and validation: follow `docs/DEVELOPMENT_WORKFLOW.md`.
 - New folders, infrastructure, dependencies, or tool adapters: read
   `docs/REPOSITORY_POLICY.md` first.
+- Installed skills: use them as procedural tools under the repository-wide policy in
+  `docs/agents/skill-governance.md`; they do not override canonical governance or create duplicate
+  artifacts.
 
 Load only documents relevant to the current task. Human approval gates in the canonical policy
 cannot be bypassed by an agent.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs live in GitHub Issues via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Use the default labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`. See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+This repository uses `docs/VISION.md`, `docs/REQUIREMENTS.md`, `docs/ARCHITECTURE.md`, and indexed
+decisions under `docs/decisions/`. See `docs/agents/domain.md`.

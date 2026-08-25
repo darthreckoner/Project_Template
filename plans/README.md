@@ -5,7 +5,7 @@ context and should not be scanned or loaded wholesale.
 
 | Plan ID | Status | Title | Related ADR | Implementation reference |
 | --- | --- | --- | --- | --- |
-| — | — | No plans recorded | — | — |
+| PLAN-001 | Approved | Simplify Skill Governance | None | — |
 
 Example entry format:
 

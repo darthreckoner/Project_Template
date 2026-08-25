@@ -28,6 +28,11 @@ contracts, security/trust, accepted intent, material uncertainty, and cross-syst
 [Planning Playbook](docs/PLANNING_PLAYBOOK.md). AI may draft plans and ADRs, but only a human may
 approve/activate a formal plan or accept an ADR.
 
+Work is classified as Level 0 direct implementation, Level 1 lightweight decision note, or Level 2
+formal plan. When classification is uncertain, escalate rather than downgrade. Installed skills are
+available by default as procedural tools, but remain subordinate to the repository-wide policy in
+[Installed Skill Governance](docs/agents/skill-governance.md).
+
 Context stays economical through progressive disclosure: load the small routing policy and current
 task first, then only relevant requirements, decisions, plans, code, and tests. Historical plans,
 unrelated rationale, and raw sources remain cold and are retrieved index-first.
