@@ -21,6 +21,13 @@ Keep `Not applicable` decisions brief and explicit.
 - [ ] Run `python scripts/check_governance.py` successfully.
 - [ ] Intentionally exercise both passing and failing CI behavior.
 
+## Optional Claude Code Skills
+
+- [ ] If `claude-handoff` will be used, verify the Claude Code CLI and background-agent capability
+  in the intended environment.
+- [ ] If `git-guardrails-claude-code` will be used, choose project or global hook scope before
+  installation and verify the resulting hook without overwriting existing Claude Code settings.
+
 ## GitHub Controls
 
 - [ ] Personalize `.github/CODEOWNERS`.

@@ -16,16 +16,12 @@ subordinate to the repository's canonical governance.
   compatible skills.
 - If the correct adaptation is unclear, stop and escalate.
 
-## Existing mappings
+## Installed capabilities
 
-| Upstream skill convention | Repository convention |
+| Skill | Repository boundary |
 | --- | --- |
-| `CONTEXT.md` / `CONTEXT-MAP.md` | Relevant Vision, Requirements, Architecture, and activated domain knowledge |
-| `docs/adr/` | `docs/decisions/`, reached through its index |
-| Specs | Existing Requirements, issue, or approved plan as applicable |
-| Plans | `plans/` and its lifecycle |
-| Handoff continuity | `.agent/CONTINUITY.md` and existing durable artifacts |
-| Test and validation commands | `docs/DEVELOPMENT_WORKFLOW.md` validation contract |
+| `claude-handoff` | User-invoked handoff to a Claude Code background agent; reuse existing durable artifacts and preserve protected intent. |
+| `git-guardrails-claude-code` | Configure Claude Code hooks only after the user chooses project or global scope; preserve existing settings and verify the hook. |
 
-The installed skills may use these mappings without separate per-skill approval. A skill-specific
-adapter is needed only if the skill cannot follow this policy through ordinary interpretation.
+These skills may be used without separate governance approval. Their external commands and settings
+changes still require the authority and scope established by the user and repository governance.

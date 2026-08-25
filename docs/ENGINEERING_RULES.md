@@ -81,8 +81,6 @@ planning lifecycle below.
 
 Formal planning is required when **any** category applies:
 
-Formal planning is required when **any** category applies:
-
 1. **Persistent state:** schemas, stored structures, migrations, destructive operations, or
    irreversible user/project state change.
 2. **Architecture:** a subsystem is created or removed, subsystem boundaries change, or a new

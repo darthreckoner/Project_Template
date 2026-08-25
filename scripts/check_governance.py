@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import json
 import re
 import sys
 from pathlib import Path
@@ -24,7 +25,6 @@ REQUIRED_FILES = (
     "docs/REPOSITORY_POLICY.md",
     "docs/SECURITY_RULES.md",
     "docs/agents/skill-governance.md",
-    "docs/agents/domain.md",
     "docs/decisions/README.md",
     "docs/decisions/ADR-TEMPLATE.md",
     "plans/README.md",
@@ -34,6 +34,7 @@ REQUIRED_FILES = (
     ".github/workflows/ci.yml",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
+    "skills-lock.json",
 )
 
 REQUIRED_DIRECTORIES = (
@@ -45,7 +46,13 @@ REQUIRED_DIRECTORIES = (
     "plans/completed",
     "src",
     "tests",
+    ".agents/skills",
 )
+
+APPROVED_SKILLS = {
+    "claude-handoff",
+    "git-guardrails-claude-code",
+}
 
 STATUS_RULES = {
     "docs/decisions/proposed": {"Proposed", "Rejected", "Superseded"},
@@ -202,6 +209,32 @@ def check_skill_governance_policy(errors: list[str]) -> None:
             )
 
 
+def check_installed_skills(errors: list[str]) -> None:
+    skills_directory = ROOT / ".agents/skills"
+    installed = {
+        path.name for path in skills_directory.iterdir() if path.is_dir()
+    }
+    if installed != APPROVED_SKILLS:
+        errors.append(
+            ".agents/skills: installed set must be exactly "
+            f"{sorted(APPROVED_SKILLS)!r} (found {sorted(installed)!r})"
+        )
+
+    lock_path = ROOT / "skills-lock.json"
+    try:
+        lock = json.loads(read_text(lock_path, errors))
+    except json.JSONDecodeError as exc:
+        errors.append(f"skills-lock.json: invalid JSON ({exc})")
+        return
+
+    locked = set(lock.get("skills", {}))
+    if locked != APPROVED_SKILLS:
+        errors.append(
+            "skills-lock.json: locked set must be exactly "
+            f"{sorted(APPROVED_SKILLS)!r} (found {sorted(locked)!r})"
+        )
+
+
 def main() -> int:
     errors: list[str] = []
     check_structure(errors)
@@ -218,6 +251,7 @@ def main() -> int:
     check_index_entries(errors)
     check_application_validation(errors)
     check_skill_governance_policy(errors)
+    check_installed_skills(errors)
 
     if errors:
         for error in errors:
