@@ -1,7 +1,12 @@
 # Planning Playbook
 
-Use this playbook only when a trigger in `ENGINEERING_RULES.md` applies. Planning creates durable
-project state and is separate from implementation.
+Use this playbook for Level 2 work or whenever classification is uncertain. Level 0 work can proceed
+directly when it is clearly specified, localized, low-risk, and changes no durable intent. Level 1
+work records a lightweight decision note for bounded implementation choices that do not alter
+requirements, architecture, security boundaries, major system behavior, or similarly durable
+intent. Planning creates durable project state and is separate from implementation.
+
+If uncertain, escalate rather than downgrade.
 
 ## Sequence
 

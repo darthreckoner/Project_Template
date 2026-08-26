@@ -16,10 +16,27 @@ Keep `Not applicable` decisions brief and explicit.
 - [ ] Select and declare the runtime/toolchain and versions where applicable.
 - [ ] Add dependency/version manifests and a lockfile where supported.
 - [ ] Add deterministic setup/install instructions.
+- [ ] Make Python 3.12 available for template validation tooling; this does not select the
+  application's runtime.
+- [ ] Ensure dependency-group support with `python -m pip install --upgrade "pip>=25.1"`.
+- [ ] Install template validation dependencies with `python -m pip install --group validation`.
 - [ ] Replace applicable validation-contract placeholders with exact commands.
 - [ ] Replace the application-validation placeholder in `.github/workflows/ci.yml`.
 - [ ] Run `python scripts/check_governance.py` successfully.
+- [ ] Run `python scripts/check_skills.py` successfully.
 - [ ] Intentionally exercise both passing and failing CI behavior.
+
+## Optional Claude Code Skills
+
+- [ ] If `claude-handoff` will be used, verify the Claude Code CLI and background-agent capability
+  in the intended environment.
+- [ ] If `git-guardrails-claude-code` will be used, choose project or global hook scope before
+  installation and verify the resulting hook without overwriting existing Claude Code settings.
+
+## Optional GitHub Issue Skills
+
+- [ ] If issue-backed skills such as `to-spec`, `to-tickets`, `triage`, or `wayfinder` will be used,
+  verify GitHub CLI availability and authentication with `gh auth status`.
 
 ## GitHub Controls
 

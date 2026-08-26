@@ -19,10 +19,18 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
         with:
-          python-version: "3.x"
+          python-version: "3.12"
+
+      - name: Install template validation dependencies
+        run: |
+          python -m pip install --upgrade "pip>=25.1"
+          python -m pip install --group validation
 
       - name: Validate repository governance
         run: python scripts/check_governance.py
+
+      - name: Validate installed skills
+        run: python scripts/check_skills.py
 
       # APPLICATION_VALIDATION_COMMAND: NOT_CONFIGURED
       # Before executable application code is merged, replace this comment block with a step that

@@ -5,7 +5,9 @@ context and should not be scanned or loaded wholesale.
 
 | Plan ID | Status | Title | Related ADR | Implementation reference |
 | --- | --- | --- | --- | --- |
-| — | — | No plans recorded | — | — |
+| PLAN-001 | Approved | Simplify Skill Governance | None | — |
+| PLAN-002 | Draft | Review Remediation and Claude Code Skill Pruning (approval withdrawn; corrected by PLAN-003) | None | f0e6989 |
+| PLAN-003 | Approved | Correct Skill Pruning Scope | None | — |
 
 Example entry format:
 

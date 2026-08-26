@@ -14,7 +14,9 @@ memory.
    [Architecture](docs/ARCHITECTURE.md).
 4. Select a runtime/toolchain and replace the validation placeholders in
    [the development workflow](docs/DEVELOPMENT_WORKFLOW.md) and CI.
-5. Run `python scripts/check_governance.py` locally and intentionally test CI.
+5. Install template tooling with `python -m pip install --upgrade "pip>=25.1"` followed by
+   `python -m pip install --group validation`; run `python scripts/check_governance.py` and
+   `python scripts/check_skills.py`, then intentionally test CI.
 
 ## How Governance Works
 
@@ -27,6 +29,11 @@ Formal planning is required by objective triggers covering persistent state, arc
 contracts, security/trust, accepted intent, material uncertainty, and cross-system impact. See the
 [Planning Playbook](docs/PLANNING_PLAYBOOK.md). AI may draft plans and ADRs, but only a human may
 approve/activate a formal plan or accept an ADR.
+
+Work is classified as Level 0 direct implementation, Level 1 lightweight decision note, or Level 2
+formal plan. When classification is uncertain, escalate rather than downgrade. Installed skills are
+available by default as procedural tools, but remain subordinate to the repository-wide policy in
+[Installed Skill Governance](docs/agents/skill-governance.md).
 
 Context stays economical through progressive disclosure: load the small routing policy and current
 task first, then only relevant requirements, decisions, plans, code, and tests. Historical plans,
@@ -43,10 +50,11 @@ Bootstrap validation:
 python scripts/check_governance.py
 ```
 
-The script checks core structure, lifecycle/directory consistency, closure metadata, index entries,
-and whether application code has appeared before application validation is configured. CI runs the
-same governance check. Before executable code is merged, configure exact stack-specific commands in
-the validation contract and replace the deliberate CI failure placeholder.
+The validation scripts check core structure, lifecycle/directory consistency, closure metadata,
+index entries, installed skill metadata, and whether application code has appeared before
+application validation is configured. CI installs the same template-tooling dependency group and
+runs both checks. Before executable code is merged, configure exact stack-specific commands in the
+validation contract and replace the deliberate CI failure placeholder.
 
 `CODEOWNERS` establishes review ownership but does not itself enforce approval. Personalize it and
 configure a GitHub ruleset or branch protection to require code-owner review and the CI check. A
