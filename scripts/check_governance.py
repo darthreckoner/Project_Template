@@ -24,12 +24,17 @@ REQUIRED_FILES = (
     "docs/PLANNING_PLAYBOOK.md",
     "docs/REPOSITORY_POLICY.md",
     "docs/SECURITY_RULES.md",
+    "docs/agents/domain.md",
+    "docs/agents/issue-tracker.md",
     "docs/agents/skill-governance.md",
+    "docs/agents/triage-labels.md",
     "docs/decisions/README.md",
     "docs/decisions/ADR-TEMPLATE.md",
     "plans/README.md",
     "plans/PLAN-TEMPLATE.md",
+    "pyproject.toml",
     "scripts/check_governance.py",
+    "scripts/check_skills.py",
     ".github/CODEOWNERS",
     ".github/workflows/ci.yml",
     ".github/dependabot.yml",
@@ -51,7 +56,28 @@ REQUIRED_DIRECTORIES = (
 
 APPROVED_SKILLS = {
     "claude-handoff",
+    "code-review",
+    "codebase-design",
+    "diagnosing-bugs",
+    "domain-modeling",
     "git-guardrails-claude-code",
+    "grill-me",
+    "grill-with-docs",
+    "grilling",
+    "handoff",
+    "implement",
+    "improve-codebase-architecture",
+    "prototype",
+    "research",
+    "resolving-merge-conflicts",
+    "tdd",
+    "teach",
+    "to-questionnaire",
+    "to-spec",
+    "to-tickets",
+    "triage",
+    "wait-what",
+    "wayfinder",
 }
 
 STATUS_RULES = {
@@ -235,6 +261,26 @@ def check_installed_skills(errors: list[str]) -> None:
         )
 
 
+def check_template_validation_contract(errors: list[str]) -> None:
+    dependency_manifest = read_text(ROOT / "pyproject.toml", errors)
+    workflow = read_text(ROOT / ".github/workflows/ci.yml", errors)
+
+    if '"PyYAML==6.0.3"' not in dependency_manifest:
+        errors.append(
+            "pyproject.toml: validation dependency group must pin PyYAML==6.0.3"
+        )
+    for required_command in (
+        'python -m pip install --upgrade "pip>=25.1"',
+        "python -m pip install --group validation",
+        "python scripts/check_skills.py",
+    ):
+        if required_command not in workflow:
+            errors.append(
+                ".github/workflows/ci.yml: missing template-validation command "
+                f"{required_command!r}"
+            )
+
+
 def main() -> int:
     errors: list[str] = []
     check_structure(errors)
@@ -252,6 +298,7 @@ def main() -> int:
     check_application_validation(errors)
     check_skill_governance_policy(errors)
     check_installed_skills(errors)
+    check_template_validation_contract(errors)
 
     if errors:
         for error in errors:

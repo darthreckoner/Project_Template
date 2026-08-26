@@ -1,0 +1,4 @@
+[dependency-groups]
+validation = [
+    "PyYAML==6.0.3",
+]

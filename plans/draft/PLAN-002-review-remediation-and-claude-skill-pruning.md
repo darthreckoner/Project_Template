@@ -2,8 +2,8 @@
 
 Identifier: PLAN-002
 Title: Review Remediation and Claude Code Skill Pruning
-Status: Approved
-Approval: Human approval recorded in Codex task conversation
+Status: Draft
+Approval: Withdrawn after the human clarified that the pruning scope was misunderstood
 
 ## Problem
 
@@ -186,8 +186,8 @@ Claude Code-specific skills, and removing skill-derived configuration that no lo
 
 ## Approval Record
 
-Approved by: Justin Rutledge
-Approval date: 2026-08-25
+Approved by: Withdrawn
+Approval date: Withdrawn on 2026-08-25
 
 ## Closure Metadata
 

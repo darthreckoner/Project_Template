@@ -16,12 +16,18 @@ subordinate to the repository's canonical governance.
   compatible skills.
 - If the correct adaptation is unclear, stop and escalate.
 
-## Installed capabilities
+## Repository mappings
 
-| Skill | Repository boundary |
+| Skill convention | Repository convention |
 | --- | --- |
-| `claude-handoff` | User-invoked handoff to a Claude Code background agent; reuse existing durable artifacts and preserve protected intent. |
-| `git-guardrails-claude-code` | Configure Claude Code hooks only after the user chooses project or global scope; preserve existing settings and verify the hook. |
+| Domain terminology | Relevant Vision, Requirements, Architecture, accepted decisions, and explicitly activated supporting knowledge |
+| ADRs | `docs/decisions/`, reached through its index and lifecycle |
+| Specs | Existing Requirements, GitHub issue, or approved plan as applicable |
+| Formal plans | `plans/` and its lifecycle |
+| Handoff continuity | `.agent/CONTINUITY.md` and existing durable artifacts |
+| Test and validation commands | `docs/DEVELOPMENT_WORKFLOW.md` validation contract |
+| Research execution | Background/subagent when supported; current session otherwise |
 
-These skills may be used without separate governance approval. Their external commands and settings
-changes still require the authority and scope established by the user and repository governance.
+Installed skills may use these mappings without separate governance approval. External commands,
+repository writes, and settings changes still require the authority and scope established by the
+user and repository governance.

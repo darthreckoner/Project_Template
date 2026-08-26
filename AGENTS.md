@@ -17,3 +17,9 @@ It is the canonical, tool-neutral policy; this file only routes work.
 
 Load only documents relevant to the current task. Human approval gates in the canonical policy
 cannot be bypassed by an agent.
+
+## Agent skills
+
+- Issue tracker: GitHub Issues via the `gh` CLI. See `docs/agents/issue-tracker.md`.
+- Triage labels: use the mappings in `docs/agents/triage-labels.md`.
+- Domain and decisions: use the canonical paths in `docs/agents/domain.md`.

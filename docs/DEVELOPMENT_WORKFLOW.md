@@ -21,9 +21,18 @@ Never knowingly hide a validation failure or report completion while a required 
 
 ## Validation Contract
 
-During template bootstrap, governance validation is the only configured command:
+Template validation uses Python 3.12 and is isolated from the future application's runtime in the
+`validation` dependency group in `pyproject.toml`. Install it with:
+
+```shell
+python -m pip install --upgrade "pip>=25.1"
+python -m pip install --group validation
+```
+
+During template bootstrap, these template validations are configured:
 
 - **GOVERNANCE** — Run: `python scripts/check_governance.py`
+- **SKILLS** — Run: `python scripts/check_skills.py`
 - **FORMAT** — Run: `NOT CONFIGURED (activate if applicable)`
 - **LINT** — Run: `NOT CONFIGURED (activate if applicable)`
 - **TYPE CHECK** — Run: `NOT CONFIGURED (activate if applicable)`
@@ -40,6 +49,10 @@ Once a stack is selected, replace applicable placeholders with exact commands an
 validation command. Remove inapplicable categories or mark them `Not applicable` with a brief
 reason. Executable application code must not be merged while the application-validation contract
 or CI command remains unconfigured.
+
+The template validation dependency group supports repository tooling only. Replace or integrate it
+deliberately when the project selects an application runtime; do not treat it as an application
+dependency declaration.
 
 ## Closure and Documentation Impact Review
 
