@@ -18,6 +18,9 @@ memory.
    `python -m pip install --group validation`; run `python scripts/check_governance.py` and
    `python scripts/check_skills.py`, then intentionally test CI.
 
+The template deliberately contains no project plan instances. Create plans only for the new
+project's own work after bootstrap.
+
 ## How Governance Works
 
 Authority descends from human decisions to accepted project truth, approved plans, proposals and
