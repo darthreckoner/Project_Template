@@ -50,3 +50,11 @@ is moved to `plans/completed/`, and `plans/README.md` is updated. AI may prepare
 may not authorize or perform its own Active-to-Completed transition.
 
 Backlog ideas may live in `plans/backlog/`; they are neither approved plans nor project truth.
+
+## Source Template Exception
+
+When maintaining the source repository that is distributed as a template, use the normal plan
+lifecycle during the work. After the human authorizes closure and the closure review is complete,
+remove the completed maintenance plan and its index entry from the distributable tree. Record the
+closure through the source repository's commit and pull-request history. Do not apply this
+exception to repositories created from the template.

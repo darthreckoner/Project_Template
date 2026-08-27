@@ -109,6 +109,20 @@ applies, a formal plan is not required. See `docs/PLANNING_PLAYBOOK.md`.
   and `Status: Completed`. AI may prepare evidence but may not authorize or perform its own
   Active-to-Completed transition.
 
+## Template Distribution Hygiene
+
+The distributable tree of a repository used as a template must contain no plan instances. It
+ships only `plans/PLAN-TEMPLATE.md`, `plans/README.md`, and the empty lifecycle directories.
+This prevents a new project from inheriting another repository's Draft, Approved, or historical
+work as its own governance state.
+
+Template-maintenance work may use the normal formal-plan lifecycle while it is in progress. After
+human-authorized closure and review, remove that plan and its index entry from the distributable
+tree instead of retaining it in `plans/completed/`. The closure evidence remains recoverable in
+the source template repository's commit and pull-request history. This narrow exception applies
+only to the source template repository; repositories created from the template use the ordinary
+plan lifecycle.
+
 GitHub identity is not proof of human review when AI uses the human's credentials. A technically
 enforced human gate requires a distinct automation/contributor identity plus a human reviewer.
 

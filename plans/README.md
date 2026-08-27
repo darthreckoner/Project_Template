@@ -5,9 +5,9 @@ context and should not be scanned or loaded wholesale.
 
 | Plan ID | Status | Title | Related ADR | Implementation reference |
 | --- | --- | --- | --- | --- |
-| PLAN-001 | Approved | Simplify Skill Governance | None | — |
-| PLAN-002 | Draft | Review Remediation and Claude Code Skill Pruning (approval withdrawn; corrected by PLAN-003) | None | f0e6989 |
-| PLAN-003 | Approved | Correct Skill Pruning Scope | None | — |
+
+No plan instances are included in this template. A project created from it begins with an empty
+plan lifecycle.
 
 Example entry format:
 
@@ -26,6 +26,13 @@ PLAN-003 | Backlog   | Web interface       | None     | —
   set `Status: Completed`, fill closure metadata, and update this index. AI must not authorize or
   perform its own Active-to-Completed transition.
 - Backlog: unapproved ideas in `backlog/`; these are not executable plans or project truth.
+
+## Source Template Maintenance
+
+The source template may hold an in-progress maintenance plan temporarily. After human-authorized
+closure and closure review, remove the maintenance plan and any index entry from the distributable
+tree. Its closure evidence remains in the source repository's commit and pull-request history;
+this exception does not apply to projects created from the template.
 
 Implementation references may use a PR or earlier implementation commits. A completed plan does
 not need to contain the SHA of the same commit that records its completion.
