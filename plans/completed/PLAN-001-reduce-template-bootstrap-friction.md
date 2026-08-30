@@ -2,7 +2,7 @@
 
 Identifier: PLAN-001
 Title: Reduce Bootstrap Friction Through Progressive Profiles
-Status: Approved
+Status: Completed
 Approval: Approved by user in current task
 
 ## Problem
@@ -160,15 +160,15 @@ The CI workflow must run the same deterministic validator. The validator must re
 
 ## Acceptance Criteria
 
-- [ ] A new user can follow the Personal Baseline path from README to a valid first commit without creating empty product-intent documents.
-- [ ] The Personal Baseline requires an explicit profile, Project Brief, and verification method before application code is merged.
-- [ ] Selecting or triggering Governed Engineering requires the full durable-intent and governance record set.
-- [ ] No profile permits an AI to approve or complete its own formal plan/ADR transition.
-- [ ] Existing security workflow, Action SHA pins, Gitleaks behavior, Dependabot policy, and least-privilege permissions are retained or strengthened.
-- [ ] The validator rejects an incomplete selected profile and reports exact remediation.
-- [ ] The default skill bundle is smaller, verified, and sufficient for common implementation, review, diagnosis, design, research, and test-first work.
-- [ ] Optional skills remain available through an explicit, reviewed, hash-pinned extension mechanism.
-- [ ] The distributed template contains no project plan instances after this maintenance work is closed.
+- [x] A new user can follow the Personal Baseline path from README to a valid first commit without creating empty product-intent documents.
+- [x] The Personal Baseline requires an explicit profile, Project Brief, and verification method before application code is merged.
+- [x] Selecting or triggering Governed Engineering requires the full durable-intent and governance record set.
+- [x] No profile permits an AI to approve or complete its own formal plan/ADR transition.
+- [x] Existing security workflow, Action SHA pins, Gitleaks behavior, Dependabot policy, and least-privilege permissions are retained or strengthened.
+- [x] The validator rejects an incomplete selected profile and reports exact remediation.
+- [x] The default skill bundle is smaller, verified, and sufficient for common implementation, review, diagnosis, design, research, and test-first work.
+- [x] Optional skills remain available through an explicit, reviewed, hash-pinned extension mechanism.
+- [x] The distributed template contains no project plan instances after this maintenance work is closed.
 
 ## Related Requirements
 
@@ -192,16 +192,16 @@ Approval date: 2026-08-30
 
 ## Closure Metadata
 
-Completion date: Pending
-Related requirements: Pending
-Related ADRs: Pending
-Implementation PR: Pending
-Implementation commits: Pending
-Validation result: Pending
-Documentation impact: Pending
-Unresolved follow-ups: Pending
+Completion date: 2026-08-30
+Related requirements: None — template-maintenance implementation
+Related ADRs: None
+Implementation PR: Not created; local implementation only
+Implementation commits: d9b03e2
+Validation result: 3 unit tests, governance validation, skill validation for 23 skills, and git diff --check passed
+Documentation impact: README, bootstrap, profile, workflow, planning, and agent-routing documentation updated
+Unresolved follow-ups: None
 
-Requirements impact: Pending
-Architecture impact: Pending
-ADR impact: Pending
-Knowledge impact: Pending
+Requirements impact: None
+Architecture impact: None
+ADR impact: None
+Knowledge impact: None
