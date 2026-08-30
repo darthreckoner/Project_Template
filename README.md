@@ -8,18 +8,20 @@ memory.
 ## Start a Project
 
 1. Mark this repository as a GitHub Template Repository, then choose **Use this template**.
-2. Complete [the bootstrap checklist](docs/BOOTSTRAP_CHECKLIST.md).
-3. Define project intent in [Vision](docs/VISION.md), accepted behavior in
-   [Requirements](docs/REQUIREMENTS.md), and the current system in
-   [Architecture](docs/ARCHITECTURE.md).
-4. Select a runtime/toolchain and replace the validation placeholders in
+2. Read [Profile Selection](docs/PROFILE_SELECTION.md) and complete the
+   [Project Brief](docs/PROJECT_BRIEF.md). Personal Baseline is the concise default; select
+   Governed Engineering for shared, sensitive, production, or materially consequential work.
+3. Select a runtime/toolchain and set the exact validation contract in
    [the development workflow](docs/DEVELOPMENT_WORKFLOW.md) and CI.
-5. Install template tooling with `python -m pip install --upgrade "pip>=25.1"` followed by
+4. Install template tooling with `python -m pip install --upgrade "pip>=25.1"` followed by
    `python -m pip install --group validation`; run `python scripts/check_governance.py` and
    `python scripts/check_skills.py`, then intentionally test CI.
+5. Choose applicable collaboration and GitHub controls. Use the
+   [bootstrap checklist](docs/BOOTSTRAP_CHECKLIST.md) for the full Governed Engineering path.
 
-The template deliberately contains no project plan instances. Create plans only for the new
-project's own work after bootstrap.
+The template deliberately contains no project plan instances in a derived project. Create formal
+plans and ADRs when the objective planning triggers apply; direct localized work can proceed as
+Level 0 and bounded durable choices can be recorded as Level 1 decisions.
 
 ## How Governance Works
 
@@ -53,11 +55,11 @@ Bootstrap validation:
 python scripts/check_governance.py
 ```
 
-The validation scripts check core structure, lifecycle/directory consistency, closure metadata,
-index entries, installed skill metadata, and whether application code has appeared before
-application validation is configured. CI installs the same template-tooling dependency group and
-runs both checks. Before executable code is merged, configure exact stack-specific commands in the
-validation contract and replace the deliberate CI failure placeholder.
+The validation scripts check core structure, the selected profile, lifecycle/directory consistency,
+closure metadata, index entries, both skill bundles, and whether application code has appeared
+before application validation is configured. CI installs the same template-tooling dependency group
+and runs both checks. Before executable code is merged, configure exact stack-specific commands in
+the validation contract and replace the deliberate CI failure placeholder.
 
 `CODEOWNERS` establishes review ownership but does not itself enforce approval. Personalize it and
 configure a GitHub ruleset or branch protection to require code-owner review and the CI check. A

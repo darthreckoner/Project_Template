@@ -2,8 +2,8 @@
 
 ## Standard Flow
 
-1. Understand the task and read the relevant accepted intent documents when the task might affect
-   them.
+1. Understand the task, read `docs/PROJECT_BRIEF.md` and `docs/PROFILE_SELECTION.md`, and read
+   relevant accepted intent documents when the task might affect them.
 2. Classify the work as Level 0, Level 1, or Level 2 using `ENGINEERING_RULES.md`.
 3. If classification is uncertain, escalate rather than downgrade.
 4. For Level 1, record the bounded decision in the most relevant existing durable artifact, issue,
@@ -43,6 +43,10 @@ During template bootstrap, these template validations are configured:
 - **FULL APPLICATION VALIDATION** — Run: `NOT CONFIGURED`
 
 `APPLICATION_VALIDATION: NOT_CONFIGURED`
+
+The source template may remain in this state while it contains no application code. A derived
+Personal Baseline or Governed Engineering project must replace it with exact commands before
+executable application code is merged.
 
 Once a stack is selected, replace applicable placeholders with exact commands and set the marker to
 `APPLICATION_VALIDATION: CONFIGURED`. Update `.github/workflows/ci.yml` to execute the same full

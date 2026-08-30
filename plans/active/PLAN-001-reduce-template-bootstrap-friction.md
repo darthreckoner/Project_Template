@@ -2,8 +2,8 @@
 
 Identifier: PLAN-001
 Title: Reduce Bootstrap Friction Through Progressive Profiles
-Status: Draft
-Approval: Pending human approval
+Status: Approved
+Approval: Approved by user in current task
 
 ## Problem
 
@@ -31,7 +31,8 @@ Preserve the template's security posture, validation discipline, human authority
 - Do not relax the authority order, human approval for protected state transitions, or the prohibition on an AI accepting its own ADR/plan.
 - Do not configure GitHub branch rules, repository visibility, push protection, code scanning, or secret-scanning settings automatically.
 - Do not change an existing derived project's chosen governance level without a project-specific decision.
-- Do not implement these changes under this draft plan.
+- Do not implement these changes while this plan is Draft; implementation requires this plan to be
+  active with `Status: Approved`.
 
 ## Current System
 
@@ -186,8 +187,8 @@ None.
 
 ## Approval Record
 
-Approved by: Pending
-Approval date: Pending
+Approved by: User
+Approval date: 2026-08-30
 
 ## Closure Metadata
 

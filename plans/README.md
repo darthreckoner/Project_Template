@@ -5,9 +5,11 @@ context and should not be scanned or loaded wholesale.
 
 | Plan ID | Status | Title | Related ADR | Implementation reference |
 | --- | --- | --- | --- | --- |
+| PLAN-001 | Approved | Reduce Bootstrap Friction Through Progressive Profiles | None | — |
 
-No plan instances are included in this template. A project created from it begins with an empty
-plan lifecycle.
+This source template currently contains one approved maintenance plan. After closure, the plan
+and its index entry will be removed so a project created from it begins with an empty plan
+lifecycle.
 
 Example entry format:
 

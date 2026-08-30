@@ -1,5 +1,34 @@
 {
   "version": 1,
+  "bundles": {
+    "core": [
+      "code-review",
+      "codebase-design",
+      "diagnosing-bugs",
+      "domain-modeling",
+      "git-guardrails-claude-code",
+      "implement",
+      "research",
+      "resolving-merge-conflicts",
+      "tdd"
+    ],
+    "extensions": [
+      "claude-handoff",
+      "grill-me",
+      "grill-with-docs",
+      "grilling",
+      "handoff",
+      "improve-codebase-architecture",
+      "prototype",
+      "teach",
+      "to-questionnaire",
+      "to-spec",
+      "to-tickets",
+      "triage",
+      "wait-what",
+      "wayfinder"
+    ]
+  },
   "skills": {
     "claude-handoff": {
       "source": "mattpocock/skills",

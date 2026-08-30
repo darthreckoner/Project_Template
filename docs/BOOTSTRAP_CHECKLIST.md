@@ -3,13 +3,25 @@
 A project created from this template is fully bootstrapped when the applicable items are complete.
 Keep `Not applicable` decisions brief and explicit.
 
-## Project Intent
+## Personal Baseline Essentials
 
 - [ ] Replace repository and document placeholders.
 - [ ] Define the project name, purpose, and intended audience.
+- [ ] Select `Personal Baseline` or `Governed Engineering` in `PROJECT_BRIEF.md`.
+- [ ] Record scope, non-goals, runtime, validation declaration, dependencies, and escalation rule
+      in `PROJECT_BRIEF.md`.
+
+Personal Baseline does not require empty Vision, Requirements, or Architecture records. Create
+them when a planning trigger or material durable decision applies.
+
+## Governed Engineering Activation
+
 - [ ] Complete and human-approve the initial `VISION.md`, including Non-Goals.
 - [ ] Complete and human-approve the initial accepted `REQUIREMENTS.md`.
 - [ ] Complete and human-approve the initial `ARCHITECTURE.md`.
+- [ ] Record Governed Engineering activation and preserve the source Project Brief.
+- [ ] Complete every applicable GitHub and security item below, recording `Enabled`, `Not
+      supported`, or `Not applicable` with a reason.
 
 ## Runtime and Validation
 

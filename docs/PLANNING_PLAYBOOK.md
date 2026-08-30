@@ -6,7 +6,9 @@ work records a lightweight decision note for bounded implementation choices that
 requirements, architecture, security boundaries, major system behavior, or similarly durable
 intent. Planning creates durable project state and is separate from implementation.
 
-If uncertain, escalate rather than downgrade.
+If uncertain, escalate rather than downgrade. Profile selection is progressive: Personal Baseline
+is the concise default for bounded work, while Governed Engineering is required when a Level 2
+trigger or collaboration, production, sensitive, or externally integrated use applies.
 
 ## Sequence
 
@@ -50,6 +52,13 @@ is moved to `plans/completed/`, and `plans/README.md` is updated. AI may prepare
 may not authorize or perform its own Active-to-Completed transition.
 
 Backlog ideas may live in `plans/backlog/`; they are neither approved plans nor project truth.
+
+## Progressive navigation
+
+- Level 0: direct, localized work that changes no durable intent.
+- Level 1: a bounded durable choice recorded in the most relevant existing project artifact.
+- Level 2: create a formal Draft plan or Proposed ADR when a trigger applies, then obtain the
+  required human approval before execution.
 
 ## Source Template Exception
 

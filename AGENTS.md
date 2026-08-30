@@ -5,6 +5,8 @@ It is the canonical, tool-neutral policy; this file only routes work.
 
 - Product intent: read the relevant sections of `docs/VISION.md` and
   `docs/REQUIREMENTS.md`.
+- Bootstrap profile and brief: read `docs/PROFILE_SELECTION.md` and
+  `docs/PROJECT_BRIEF.md` when establishing or changing project governance level.
 - System design: read `docs/ARCHITECTURE.md`, then the decision index before any relevant ADR.
 - Work covered by a planning trigger: follow `docs/PLANNING_PLAYBOOK.md` and the plan index.
 - Security-sensitive work: follow `docs/SECURITY_RULES.md`.

@@ -17,9 +17,10 @@ REQUIRED_FILES = (
     ".gitignore",
     "docs/ENGINEERING_RULES.md",
     "docs/BOOTSTRAP_CHECKLIST.md",
-    "docs/VISION.md",
-    "docs/REQUIREMENTS.md",
-    "docs/ARCHITECTURE.md",
+    "docs/PROJECT_BRIEF.md",
+    "docs/PROFILE_SELECTION.md",
+    "docs/profiles/personal-baseline.md",
+    "docs/profiles/governed-engineering.md",
     "docs/DEVELOPMENT_WORKFLOW.md",
     "docs/PLANNING_PLAYBOOK.md",
     "docs/REPOSITORY_POLICY.md",
@@ -52,25 +53,29 @@ REQUIRED_DIRECTORIES = (
     "src",
     "tests",
     ".agents/skills",
+    ".agents/skills-extensions",
 )
 
 APPROVED_SKILLS = {
-    "claude-handoff",
     "code-review",
     "codebase-design",
     "diagnosing-bugs",
     "domain-modeling",
     "git-guardrails-claude-code",
+    "implement",
+    "research",
+    "resolving-merge-conflicts",
+    "tdd",
+}
+
+EXTENSION_SKILLS = {
+    "claude-handoff",
     "grill-me",
     "grill-with-docs",
     "grilling",
     "handoff",
-    "implement",
     "improve-codebase-architecture",
     "prototype",
-    "research",
-    "resolving-merge-conflicts",
-    "tdd",
     "teach",
     "to-questionnaire",
     "to-spec",
@@ -79,6 +84,8 @@ APPROVED_SKILLS = {
     "wait-what",
     "wayfinder",
 }
+
+ALL_SKILLS = APPROVED_SKILLS | EXTENSION_SKILLS
 
 STATUS_RULES = {
     "docs/decisions/proposed": {"Proposed", "Rejected", "Superseded"},
@@ -219,6 +226,61 @@ def check_application_validation(errors: list[str]) -> None:
         )
 
 
+def profile_errors(text: str, existing_files: set[str], checklist: str) -> list[str]:
+    errors: list[str] = []
+    profile = field_value(text, "Selected profile")
+    if profile == "Template":
+        return errors
+    if profile not in {"Personal Baseline", "Governed Engineering"}:
+        errors.append(
+            "docs/PROJECT_BRIEF.md: Selected profile must be Template, Personal Baseline, "
+            "or Governed Engineering"
+        )
+        return errors
+
+    required_fields = (
+        "Date",
+        "Validation declaration",
+        "External dependencies and integrations",
+    )
+    for field in required_fields:
+        value = field_value(text, field)
+        if value is None or value.startswith("["):
+            errors.append(
+                f"docs/PROJECT_BRIEF.md: complete '{field}:' for the selected profile"
+            )
+
+    if profile == "Governed Engineering":
+        for relative_path in ("docs/VISION.md", "docs/REQUIREMENTS.md", "docs/ARCHITECTURE.md"):
+            if relative_path not in existing_files:
+                errors.append(
+                    f"{relative_path}: required for Governed Engineering; derive it from "
+                    "docs/PROJECT_BRIEF.md"
+                )
+        if field_value(text, "Governed checklist") != "Complete":
+            errors.append(
+                "docs/PROJECT_BRIEF.md: set 'Governed checklist: Complete' after the full "
+                "bootstrap checklist is satisfied"
+            )
+        if "Governed Engineering Activation" not in checklist:
+            errors.append(
+                "docs/BOOTSTRAP_CHECKLIST.md: Governed Engineering activation section is missing"
+            )
+    return errors
+
+
+def check_profile(errors: list[str]) -> None:
+    brief_path = ROOT / "docs/PROJECT_BRIEF.md"
+    text = read_text(brief_path, errors)
+    checklist = read_text(ROOT / "docs/BOOTSTRAP_CHECKLIST.md", errors)
+    existing_files = {
+        relative_path
+        for relative_path in ("docs/VISION.md", "docs/REQUIREMENTS.md", "docs/ARCHITECTURE.md")
+        if (ROOT / relative_path).is_file()
+    }
+    errors.extend(profile_errors(text, existing_files, checklist))
+
+
 def check_skill_governance_policy(errors: list[str]) -> None:
     policy = read_text(ROOT / "docs/agents/skill-governance.md", errors)
     required_phrases = (
@@ -236,14 +298,20 @@ def check_skill_governance_policy(errors: list[str]) -> None:
 
 
 def check_installed_skills(errors: list[str]) -> None:
-    skills_directory = ROOT / ".agents/skills"
-    installed = {
-        path.name for path in skills_directory.iterdir() if path.is_dir()
+    installed_core = {
+        path.name for path in (ROOT / ".agents/skills").iterdir() if path.is_dir()
     }
-    if installed != APPROVED_SKILLS:
+    installed_extensions = {
+        path.name
+        for path in (ROOT / ".agents/skills-extensions").iterdir()
+        if path.is_dir()
+    }
+    if installed_core != APPROVED_SKILLS:
+        errors.append(f".agents/skills: core set mismatch (found {sorted(installed_core)!r})")
+    if installed_extensions != EXTENSION_SKILLS:
         errors.append(
-            ".agents/skills: installed set must be exactly "
-            f"{sorted(APPROVED_SKILLS)!r} (found {sorted(installed)!r})"
+            ".agents/skills-extensions: extension set mismatch "
+            f"(found {sorted(installed_extensions)!r})"
         )
 
     lock_path = ROOT / "skills-lock.json"
@@ -254,11 +322,17 @@ def check_installed_skills(errors: list[str]) -> None:
         return
 
     locked = set(lock.get("skills", {}))
-    if locked != APPROVED_SKILLS:
-        errors.append(
-            "skills-lock.json: locked set must be exactly "
-            f"{sorted(APPROVED_SKILLS)!r} (found {sorted(locked)!r})"
-        )
+    if locked != ALL_SKILLS:
+        errors.append(f"skills-lock.json: locked set mismatch (found {sorted(locked)!r})")
+    bundles = lock.get("bundles", {})
+    if set(bundles.get("core", [])) != APPROVED_SKILLS:
+        errors.append("skills-lock.json: core bundle does not match the reviewed core set")
+    if set(bundles.get("extensions", [])) != EXTENSION_SKILLS:
+        errors.append("skills-lock.json: extension bundle does not match the optional set")
+    for skill in ALL_SKILLS:
+        entry = lock.get("skills", {}).get(skill, {})
+        if not entry.get("computedHash"):
+            errors.append(f"skills-lock.json: {skill} is missing a computedHash")
 
 
 def check_template_validation_contract(errors: list[str]) -> None:
@@ -295,6 +369,7 @@ def main() -> int:
     check_lifecycle_states(errors)
     check_completed_plan_metadata(errors)
     check_index_entries(errors)
+    check_profile(errors)
     check_application_validation(errors)
     check_skill_governance_policy(errors)
     check_installed_skills(errors)

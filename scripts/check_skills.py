@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import re
 import sys
+import json
 from pathlib import Path
 
 try:
@@ -18,7 +19,10 @@ except ModuleNotFoundError:
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SKILLS_DIRECTORY = ROOT / ".agents" / "skills"
+SKILLS_DIRECTORIES = {
+    "core": ROOT / ".agents" / "skills",
+    "extensions": ROOT / ".agents" / "skills-extensions",
+}
 MAX_SKILL_NAME_LENGTH = 64
 ALLOWED_FRONTMATTER_KEYS = {
     "name",
@@ -114,9 +118,28 @@ def validate_skill(skill_directory: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    skill_directories = sorted(path for path in SKILLS_DIRECTORY.iterdir() if path.is_dir())
-    for skill_directory in skill_directories:
+    skill_directories = []
+    for bundle_directory in SKILLS_DIRECTORIES.values():
+        skill_directories.extend(
+            path for path in bundle_directory.iterdir() if path.is_dir()
+        )
+    for skill_directory in sorted(skill_directories):
         validate_skill(skill_directory, errors)
+
+    try:
+        lock = json.loads((ROOT / "skills-lock.json").read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        errors.append(f"skills-lock.json: cannot read valid JSON ({exc})")
+    else:
+        for bundle, directory in SKILLS_DIRECTORIES.items():
+            for skill_directory in directory.iterdir():
+                if skill_directory.is_dir():
+                    entry = lock.get("skills", {}).get(skill_directory.name, {})
+                    if not entry.get("computedHash"):
+                        errors.append(
+                            f"skills-lock.json: {skill_directory.name} in {bundle} "
+                            "bundle has no computedHash"
+                        )
 
     if errors:
         for error in errors:
@@ -124,7 +147,7 @@ def main() -> int:
         print(f"Skill validation failed with {len(errors)} error(s).")
         return 1
 
-    print(f"Skill validation passed for {len(skill_directories)} skill(s).")
+    print(f"Skill validation passed for {len(skill_directories)} skills across core and extensions.")
     return 0
 
 
