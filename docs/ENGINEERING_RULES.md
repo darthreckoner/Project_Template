@@ -65,6 +65,10 @@ mapping used by installed skills.
 
 ## Planning Levels and Triggers
 
+Projects may begin with either the Personal Baseline or Governed Engineering profile described in
+`docs/PROFILE_SELECTION.md`. Profiles control timing and required records only; this policy remains
+canonical for authority, security, validation, and approval.
+
 Classify work before implementation:
 
 0. **Level 0 — Direct implementation:** clearly specified, localized, low-risk work that changes

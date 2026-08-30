@@ -4,8 +4,9 @@ How the engineering skills should consume this repo's domain documentation when 
 
 ## Before exploring, read these
 
-- Read the relevant sections of **`docs/VISION.md`**, **`docs/REQUIREMENTS.md`**, and
-  **`docs/ARCHITECTURE.md`** when the task might affect accepted intent.
+- Read the relevant sections of **`docs/PROJECT_BRIEF.md`** and, when activated, **`docs/VISION.md`**,
+  **`docs/REQUIREMENTS.md`**, and **`docs/ARCHITECTURE.md`** when the task might affect accepted
+  intent.
 - Read **`docs/decisions/README.md`** before opening an ADR, then read only decisions relevant to
   the area being changed.
 - Read an activated glossary only when the repository explicitly designates it as supporting domain
@@ -17,9 +18,10 @@ This repository's canonical layout:
 
 ```
 /
-├── docs/VISION.md
-├── docs/REQUIREMENTS.md
-├── docs/ARCHITECTURE.md
+├── docs/PROJECT_BRIEF.md
+├── docs/VISION.md (when Governed Engineering is activated)
+├── docs/REQUIREMENTS.md (when Governed Engineering is activated)
+├── docs/ARCHITECTURE.md (when Governed Engineering is activated)
 ├── docs/decisions/
 │   ├── README.md
 │   ├── proposed/

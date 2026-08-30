@@ -5,9 +5,8 @@ context and should not be scanned or loaded wholesale.
 
 | Plan ID | Status | Title | Related ADR | Implementation reference |
 | --- | --- | --- | --- | --- |
-
-No plan instances are included in this template. A project created from it begins with an empty
-plan lifecycle.
+No plan instances are included in this distributable template. A project created from it begins
+with an empty plan lifecycle.
 
 Example entry format:
 
