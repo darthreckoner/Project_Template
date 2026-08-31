@@ -57,32 +57,34 @@ REQUIRED_DIRECTORIES = (
 )
 
 APPROVED_SKILLS = {
+    "ask-matt",
     "code-review",
     "codebase-design",
     "diagnosing-bugs",
     "domain-modeling",
     "git-guardrails-claude-code",
     "implement",
-    "research",
-    "resolving-merge-conflicts",
-    "tdd",
-}
-
-EXTENSION_SKILLS = {
+    "implement-spec",
     "claude-handoff",
-    "grill-me",
     "grill-with-docs",
-    "grilling",
     "handoff",
     "improve-codebase-architecture",
     "prototype",
+    "research",
+    "resolving-merge-conflicts",
     "teach",
-    "to-questionnaire",
+    "tdd",
     "to-spec",
     "to-tickets",
     "triage",
     "wait-what",
     "wayfinder",
+}
+
+EXTENSION_SKILLS = {
+    "grill-me",
+    "grilling",
+    "to-questionnaire",
 }
 
 ALL_SKILLS = APPROVED_SKILLS | EXTENSION_SKILLS
