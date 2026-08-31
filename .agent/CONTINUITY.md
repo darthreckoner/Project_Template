@@ -7,4 +7,10 @@
   in commit `d9b03e2` on branch `codex/reduce-bootstrap-friction`.
 - Cleanup state: stale plan and legacy product-intent placeholders were removed; reusable templates,
   policy, and empty lifecycle directories remain.
-- Next step: validate and review the clean source template.
+- Skill state: requested engineering workflow skills are active in `.agents/skills`; the existing
+  `git-guardrails-claude-code` security control remains active. `grill-me`, `grilling`, and
+  `to-questionnaire` remain optional extensions. Requested `grill-me-to-docs` maps to the
+  upstream `grill-with-docs`; `protoype` maps to `prototype`.
+- Validation: `scripts/check_governance.py`, `scripts/check_skills.py`, and `git diff --check`
+  passed on 2026-08-31.
+- Next step: review the clean source template.
