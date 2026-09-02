@@ -36,7 +36,7 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/ask-matt/SKILL.md",
-      "computedHash": "B25D86FB36B1D294EEEAD5D7DB529F86135F9671F2AFCD607579A63BB2213769"
+      "computedHash": "f71450d1dd19a2340d3558889b055300cd01c12e2603a962eec8ca10a6b54ead"
     },
     "claude-handoff": {
       "source": "mattpocock/skills",
@@ -48,7 +48,7 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/code-review/SKILL.md",
-      "computedHash": "b4f17857c85ca60af1df7d0b623dd03c2a48419f6123e714f3d9748ca744a1bf"
+      "computedHash": "530bf7114c6905a17e7b1068a2cbdcfefc535f2a8b4b2e757ae4c7fd8ae7bb16"
     },
     "codebase-design": {
       "source": "mattpocock/skills",
@@ -156,13 +156,13 @@
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/to-spec/SKILL.md",
-      "computedHash": "0ee8caf20fc7df94db53e76f42588fb01eee88c6f8dc97e7a3a0565be8978e74"
+      "computedHash": "58f95dc13becfda7c91056711c8a9a78ad7d18541373e2f46e407557ec56fb35"
     },
     "to-tickets": {
       "source": "mattpocock/skills",
       "sourceType": "github",
       "skillPath": "skills/engineering/to-tickets/SKILL.md",
-      "computedHash": "4aba8639f46b55ede011866f83e9e87ae10482b72c14848389e5801eba0b37bf"
+      "computedHash": "91a20133174a9e792f2d946fb53a09d3015165171831d689276496f184725d6f"
     },
     "triage": {
       "source": "mattpocock/skills",
