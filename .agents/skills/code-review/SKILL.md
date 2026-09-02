@@ -1,6 +1,8 @@
 ---
 name: code-review
 description: "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes: Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \"review since X\"."
+metadata:
+  local_adaptation: Reviews formal requirement and verification identifiers when present.
 ---
 
 Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
@@ -31,6 +33,14 @@ Look for the originating spec, in this order:
 2. A path the user passed as an argument.
 3. A spec file under `docs/`, `specs/`, or `.scratch/` matching the branch name or feature.
 4. If nothing is found, ask the user where the spec is. If they say there isn't one, the **Spec** sub-agent will skip and report "no spec available".
+
+When the specification contains `REQ-###` identifiers, treat them as the
+normative behavior contract. It must also contain `VERIFY-###` properties, a
+coverage table, and exactly one readiness result. A missing or malformed formal
+contract, or one marked `Not Ready for Implementation`, is not a valid basis
+for a conformance review; report that blocker instead of inventing an
+interpretation. For a legacy specification without identifiers, retain the
+prose-based review below.
 
 ### 3. Identify the standards sources
 
@@ -68,7 +78,7 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 
 - The diff command and commit list.
 - The path or fetched contents of the spec.
-- The brief: "Report: (a) requirements the spec asked for that are missing or partial; (b) behaviour in the diff that wasn't asked for (scope creep); (c) requirements that look implemented but where the implementation looks wrong. Quote the spec line for each finding. Under 400 words."
+- The brief: "For a formal specification, report by `REQ-###`: (a) every requirement missing or only partially implemented; (b) behavior in the diff that no requirement permits; (c) requirements that look implemented but appear incorrect; and (d) verification properties whose required evidence is absent. Cite the requirement or verification line for every finding. For a legacy prose specification, report the same categories and quote the relevant spec line. Under 400 words."
 
 If the spec is missing, skip the Spec sub-agent and note this in the final report.
 

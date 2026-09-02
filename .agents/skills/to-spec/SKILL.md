@@ -1,76 +1,65 @@
 ---
 name: to-spec
-description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed."
+description: Turn an aligned conversation into a traceable, human-confirmed behavioral specification and publish it when it is ready for agents.
 disable-model-invocation: true
+metadata:
+  local_adaptation: Formal contract, coverage, and readiness gate for Project_Template.
 ---
 
-This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
+# To Spec
 
-Read `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`. If either is missing, stop and
-report that required repository configuration is absent.
+Turn accepted intent into one canonical specification that an implementation
+agent can follow without inventing product decisions.
+
+Do not restart the broad interview. Synthesize the conversation and repository
+context already available. Ask only targeted questions when a material behavior
+remains ambiguous.
+
+Read `docs/agents/issue-tracker.md` and `docs/agents/triage-labels.md`. If
+either is missing, stop and report the missing repository configuration.
 
 ## Process
 
-1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
+1. Inspect the relevant repository context. Follow the repository's authority
+   hierarchy, use its domain vocabulary, and identify the accepted sources of
+   intent. Do not elevate a derived issue, draft, or conversation above an
+   authoritative source.
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+2. Draft the specification using
+   [the formal specification reference](references/formal-specification.md).
+   Give each normative requirement a `REQ-###` identifier and each verification
+   property a `VERIFY-###` identifier. Record each extracted source requirement
+   and source location, then show that it is covered, deliberately excluded, or
+   unresolved.
 
-Check with the user that these seams match their expectations.
+3. Use the lightest formalism that removes ambiguity. Let the behavior and
+   established project conventions choose the form: schemas or type shapes for
+   typed interfaces, state transitions for stateful behavior, and ordering or
+   idempotency rules for asynchronous behavior. Omit sections with no meaningful
+   content. Do not pad a simple change with pseudo-formal language.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+4. If two reasonable implementations could produce materially different
+   observable behavior, resolve the question from authoritative context. If it
+   remains unresolved, show the user the decision, the valid outcomes, and the
+   implementation impact. Do not publish or label the specification
+   `ready-for-agent` until the user resolves every blocking question.
 
-<spec-template>
+5. Identify the smallest sufficient set of existing test seams. Preserve a
+   previously accepted seam unless the formal contract proves it cannot verify a
+   required property. Link every significant `REQ-###` to one or more
+   `VERIFY-###` properties.
 
-## Problem Statement
+6. Run the readiness check in the reference. Present the completed behavioral
+   contract, resolved decisions, coverage, and test seams for human confirmation.
+   Do not treat the agent's own judgment as confirmation.
 
-The problem that the user is facing, from the user's perspective.
+7. After confirmation and a `Ready for Implementation` result, publish one
+   canonical specification issue through `docs/agents/issue-tracker.md` and
+   apply the mapped `ready-for-agent` label. Preserve the issue as the source
+   for `/to-tickets`; do not publish a competing specification artifact.
 
-## Solution
+## Boundaries
 
-The solution to the problem, from the user's perspective.
-
-## User Stories
-
-A LONG, numbered list of user stories. Each user story should be in the format of:
-
-1. As an <actor>, I want a <feature>, so that <benefit>
-
-<user-story-example>
-1. As a mobile bank customer, I want to see balance on my accounts, so that I can make better informed decisions about my spending
-</user-story-example>
-
-This list of user stories should be extremely extensive and cover all aspects of the feature.
-
-## Implementation Decisions
-
-A list of implementation decisions that were made. This can include:
-
-- The modules that will be built/modified
-- The interfaces of those modules that will be modified
-- Technical clarifications from the developer
-- Architectural decisions
-- Schema changes
-- API contracts
-- Specific interactions
-
-Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
-
-Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
-
-## Testing Decisions
-
-A list of testing decisions that were made. Include:
-
-- A description of what makes a good test (only test external behavior, not implementation details)
-- Which modules will be tested
-- Prior art for the tests (i.e. similar types of tests in the codebase)
-
-## Out of Scope
-
-A description of the things that are out of scope for this spec.
-
-## Further Notes
-
-Any further notes about the feature.
-
-</spec-template>
+Formalization clarifies accepted intent. It does not make product, architecture,
+or policy decisions that the sources and user have not settled. A specification
+with blocking questions is useful, but it is **Not Ready for Implementation**.

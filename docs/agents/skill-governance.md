@@ -31,3 +31,17 @@ subordinate to the repository's canonical governance.
 Installed skills may use these mappings without separate governance approval. External commands,
 repository writes, and settings changes still require the authority and scope established by the
 user and repository governance.
+
+## Local adaptations
+
+The following upstream-derived core skills have repository-specific adaptations.
+Their `skills-lock.json` entries retain upstream origin so maintainers can inspect
+upstream changes before updating. Reapply or reconsider the adaptation when an
+upstream update touches the same behavior.
+
+| Skill | Local adaptation |
+| --- | --- |
+| `to-spec` | Creates a traceable `REQ-###` and `VERIFY-###` behavioral contract, resolves blocking ambiguity with the user, and publishes only after readiness confirmation. |
+| `to-tickets` | Requires a ready formal specification and proves requirement and verification coverage before ticket publication. |
+| `ask-matt` | Describes formalization as part of the existing `to-spec` stage. |
+| `code-review` | Reviews formal requirements and verification evidence by identifier, while retaining prose fallback for legacy specifications. |
