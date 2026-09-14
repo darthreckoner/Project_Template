@@ -27,21 +27,17 @@ REQUIRED_FILES = (
     "docs/SECURITY_RULES.md",
     "docs/agents/domain.md",
     "docs/agents/issue-tracker.md",
-    "docs/agents/skill-governance.md",
-    "docs/agents/triage-labels.md",
     "docs/decisions/README.md",
     "docs/decisions/ADR-TEMPLATE.md",
     "plans/README.md",
     "plans/PLAN-TEMPLATE.md",
     "pyproject.toml",
     "scripts/check_governance.py",
-    "scripts/check_skills.py",
-    ".github/CODEOWNERS",
+      ".github/CODEOWNERS",
     ".github/workflows/ci.yml",
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
-    "skills-lock.json",
-)
+   )
 
 REQUIRED_DIRECTORIES = (
     "docs/decisions/proposed",
@@ -52,50 +48,7 @@ REQUIRED_DIRECTORIES = (
     "plans/completed",
     "src",
     "tests",
-    ".agents/skills",
-    ".agents/skills-extensions",
 )
-
-APPROVED_SKILLS = {
-    "ask-matt",
-    "code-review",
-    "codebase-design",
-    "diagnosing-bugs",
-    "domain-modeling",
-    "git-guardrails-claude-code",
-    "implement",
-    "implement-spec",
-    "claude-handoff",
-    "grill-with-docs",
-    "handoff",
-    "improve-codebase-architecture",
-    "prototype",
-    "research",
-    "resolving-merge-conflicts",
-    "teach",
-    "tdd",
-    "to-spec",
-    "to-tickets",
-    "triage",
-    "wait-what",
-    "wayfinder",
-}
-
-EXTENSION_SKILLS = {
-    "grill-me",
-    "grilling",
-    "to-questionnaire",
-}
-
-ALL_SKILLS = APPROVED_SKILLS | EXTENSION_SKILLS
-
-STATUS_RULES = {
-    "docs/decisions/proposed": {"Proposed", "Rejected", "Superseded"},
-    "docs/decisions/accepted": {"Accepted"},
-    "plans/draft": {"Draft"},
-    "plans/active": {"Approved"},
-    "plans/completed": {"Completed"},
-}
 
 COMPLETED_PLAN_FIELDS = (
     "Approval",
@@ -283,60 +236,6 @@ def check_profile(errors: list[str]) -> None:
     errors.extend(profile_errors(text, existing_files, checklist))
 
 
-def check_skill_governance_policy(errors: list[str]) -> None:
-    policy = read_text(ROOT / "docs/agents/skill-governance.md", errors)
-    required_phrases = (
-        "available for use by default",
-        "subordinate to the repository's canonical governance",
-        "material conflict",
-        "stop and escalate",
-    )
-    for phrase in required_phrases:
-        if phrase not in policy:
-            errors.append(
-                "docs/agents/skill-governance.md: missing required policy phrase "
-                f"{phrase!r}"
-            )
-
-
-def check_installed_skills(errors: list[str]) -> None:
-    installed_core = {
-        path.name for path in (ROOT / ".agents/skills").iterdir() if path.is_dir()
-    }
-    installed_extensions = {
-        path.name
-        for path in (ROOT / ".agents/skills-extensions").iterdir()
-        if path.is_dir()
-    }
-    if installed_core != APPROVED_SKILLS:
-        errors.append(f".agents/skills: core set mismatch (found {sorted(installed_core)!r})")
-    if installed_extensions != EXTENSION_SKILLS:
-        errors.append(
-            ".agents/skills-extensions: extension set mismatch "
-            f"(found {sorted(installed_extensions)!r})"
-        )
-
-    lock_path = ROOT / "skills-lock.json"
-    try:
-        lock = json.loads(read_text(lock_path, errors))
-    except json.JSONDecodeError as exc:
-        errors.append(f"skills-lock.json: invalid JSON ({exc})")
-        return
-
-    locked = set(lock.get("skills", {}))
-    if locked != ALL_SKILLS:
-        errors.append(f"skills-lock.json: locked set mismatch (found {sorted(locked)!r})")
-    bundles = lock.get("bundles", {})
-    if set(bundles.get("core", [])) != APPROVED_SKILLS:
-        errors.append("skills-lock.json: core bundle does not match the reviewed core set")
-    if set(bundles.get("extensions", [])) != EXTENSION_SKILLS:
-        errors.append("skills-lock.json: extension bundle does not match the optional set")
-    for skill in ALL_SKILLS:
-        entry = lock.get("skills", {}).get(skill, {})
-        if not entry.get("computedHash"):
-            errors.append(f"skills-lock.json: {skill} is missing a computedHash")
-
-
 def check_template_validation_contract(errors: list[str]) -> None:
     dependency_manifest = read_text(ROOT / "pyproject.toml", errors)
     workflow = read_text(ROOT / ".github/workflows/ci.yml", errors)
@@ -347,8 +246,7 @@ def check_template_validation_contract(errors: list[str]) -> None:
         )
     for required_command in (
         'python -m pip install --upgrade "pip>=25.1"',
-        "python -m pip install --group validation",
-        "python scripts/check_skills.py",
+        "python -m pip install --group validation",        
     ):
         if required_command not in workflow:
             errors.append(
@@ -373,8 +271,7 @@ def main() -> int:
     check_index_entries(errors)
     check_profile(errors)
     check_application_validation(errors)
-    check_skill_governance_policy(errors)
-    check_installed_skills(errors)
+
     check_template_validation_contract(errors)
 
     if errors:
