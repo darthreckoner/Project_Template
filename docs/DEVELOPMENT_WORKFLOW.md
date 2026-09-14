@@ -32,7 +32,6 @@ python -m pip install --group validation
 During template bootstrap, these template validations are configured:
 
 - **GOVERNANCE** — Run: `python scripts/check_governance.py`
-- **SKILLS** — Run: `python scripts/check_skills.py`
 - **FORMAT** — Run: `NOT CONFIGURED (activate if applicable)`
 - **LINT** — Run: `NOT CONFIGURED (activate if applicable)`
 - **TYPE CHECK** — Run: `NOT CONFIGURED (activate if applicable)`

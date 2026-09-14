@@ -14,8 +14,7 @@ memory.
 3. Select a runtime/toolchain and set the exact validation contract in
    [the development workflow](docs/DEVELOPMENT_WORKFLOW.md) and CI.
 4. Install template tooling with `python -m pip install --upgrade "pip>=25.1"` followed by
-   `python -m pip install --group validation`; run `python scripts/check_governance.py` and
-   `python scripts/check_skills.py`, then intentionally test CI.
+   `python -m pip install --group validation`; run `python scripts/check_governance.py`, then intentionally test CI.
 5. Choose applicable collaboration and GitHub controls. Use the
    [bootstrap checklist](docs/BOOTSTRAP_CHECKLIST.md) for the full Governed Engineering path.
 
@@ -36,9 +35,7 @@ contracts, security/trust, accepted intent, material uncertainty, and cross-syst
 approve/activate a formal plan or accept an ADR.
 
 Work is classified as Level 0 direct implementation, Level 1 lightweight decision note, or Level 2
-formal plan. When classification is uncertain, escalate rather than downgrade. Installed skills are
-available by default as procedural tools, but remain subordinate to the repository-wide policy in
-[Installed Skill Governance](docs/agents/skill-governance.md).
+formal plan. When classification is uncertain, escalate rather than downgrade.
 
 Context stays economical through progressive disclosure: load the small routing policy and current
 task first, then only relevant requirements, decisions, plans, code, and tests. Historical plans,

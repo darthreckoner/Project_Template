@@ -26,3 +26,4 @@
   validation, computed-hash verification, `git diff --check`, and independent
   workflow scenarios passed on 2026-09-02.
 - Next step: review and merge PR #17 when ready.
+- Removed Skills. Skills should be added on a project by project bases, not live in the template.
