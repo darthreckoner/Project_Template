@@ -44,24 +44,6 @@ document and replace it with a routing reference.
 Read `docs/decisions/README.md` before opening ADRs and `plans/README.md` before historical plans.
 When `knowledge/` is activated, read its index and synthesized modules before raw sources.
 
-## Installed Skill Governance
-
-Installed skills are procedural tools available for use by default. Installation does not grant a
-skill authority over repository rules or accepted project truth.
-
-- This policy, together with the rest of this document, governs every installed skill.
-- Skills must not override Vision, Requirements, Architecture, accepted ADRs, security rules, or
-  other protected intent.
-- Skills must not create duplicate canonical artifacts merely because upstream conventions use
-  different names or locations.
-- Existing approval requirements remain unchanged.
-- Skills should use the repository's paths, terminology, workflows, validation commands, and
-  artifact structures wherever possible.
-- Add a skill-specific adapter or exception only when a material conflict actually exists.
-- If a conflict exists and the correct adaptation is unclear, stop and escalate rather than guess.
-
-See [`docs/agents/skill-governance.md`](agents/skill-governance.md) for the repository-specific
-mapping used by installed skills.
 
 ## Planning Levels and Triggers
 
