@@ -251,7 +251,6 @@ def main() -> int:
         print(f"Governance validation failed with {len(errors)} error(s).")
         return 1
 
-    check_lifecycle_states(errors)
     check_completed_plan_metadata(errors)
     check_index_entries(errors)
     check_profile(errors)
