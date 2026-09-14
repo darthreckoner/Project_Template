@@ -99,19 +99,6 @@ def check_structure(errors: list[str]) -> None:
             errors.append(f"{relative_path}/: required directory is missing")
 
 
-def check_lifecycle_states(errors: list[str]) -> None:
-    for relative_directory, allowed_statuses in STATUS_RULES.items():
-        for path in markdown_files(relative_directory):
-            text = read_text(path, errors)
-            status = field_value(text, "Status")
-            if status not in allowed_statuses:
-                allowed = ", ".join(sorted(allowed_statuses))
-                errors.append(
-                    f"{path.relative_to(ROOT)}: Status must be one of [{allowed}] "
-                    f"for {relative_directory}/ (found {status!r})"
-                )
-
-
 def check_completed_plan_metadata(errors: list[str]) -> None:
     for path in markdown_files("plans/completed"):
         text = read_text(path, errors)
