@@ -16,6 +16,13 @@ Do not add speculative service layers, unused configuration systems, agent-role 
 orchestration systems, or multi-agent frameworks. The initial model is one capable agent, good
 instructions, durable project state, deterministic validation, and human approval gates.
 
+## Bundled context maintenance
+
+`.agents/skills/context-maintenance/SKILL.md` is the single bundled maintenance skill.
+It contains a portable documentation procedure, with no runtime dependencies or background agent.
+Additional skills are introduced per project when needed. Project-specific policy remains in its
+canonical documents, and skill maintenance must preserve those authority boundaries.
+
 ## Optional Modules
 
 ### Security Baseline and Capability-Triggered Controls

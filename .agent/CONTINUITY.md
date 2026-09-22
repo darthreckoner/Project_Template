@@ -26,4 +26,6 @@
   validation, computed-hash verification, `git diff --check`, and independent
   workflow scenarios passed on 2026-09-02.
 - Next step: review and merge PR #17 when ready.
-- Removed Skills. Skills should be added on a project by project bases, not live in the template.
+- Bundled skill: `context-maintenance` provides portable context audits and cleanup.
+  Other skills are added per project when needed. Keep routine context rules in
+  `docs/ENGINEERING_RULES.md`; load the skill only for maintenance requests.

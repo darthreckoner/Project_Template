@@ -10,6 +10,9 @@ It is the canonical, tool-neutral policy; this file only routes work.
 - System design: read `docs/ARCHITECTURE.md` when activated, then the decision index before any
   relevant ADR.
 - Work covered by a planning trigger: follow `docs/PLANNING_PLAYBOOK.md` and the plan index.
+- Context audits or substantial cleanup: use
+  `.agents/skills/context-maintenance/SKILL.md`. Routine upkeep follows the canonical
+  Context Economy rules; do not load the full maintenance procedure for ordinary work.
 - Security-sensitive work: follow `docs/SECURITY_RULES.md`.
 - Implementation and validation: follow `docs/DEVELOPMENT_WORKFLOW.md`.
 - New folders, infrastructure, dependencies, or tool adapters: read
