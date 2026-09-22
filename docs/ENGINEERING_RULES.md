@@ -41,6 +41,20 @@ trigger.
 If an always-loaded file accumulates task-specific guidance, move that guidance into a scoped
 document and replace it with a routing reference.
 
+Maintain one authoritative continuity entry point for multi-step work and handoffs. Update current
+state in place, aiming for at most 8,000 characters unless essential information requires an
+explained exception. Keep active work, open decisions, pending approvals, verification, and next
+actions visible. Preserve distinctions between proposals, accepted decisions, implementation,
+verification, and human acceptance. Link detailed records with explicit loading conditions.
+
+Reuse applicable instructions already available and current. Use one agent by default;
+delegate only when requested or when applicable project or skill instructions call for it.
+
+Keep routine tool results to relevant findings and bounded excerpts; save full diagnostics in
+local scratch files. Reuse current findings and narrow queries when output truncates. Requested
+audits and substantial context cleanup use the bundled `context-maintenance` skill; its procedure
+does not authorize changes to accepted truth or lifecycle states.
+
 Read `docs/decisions/README.md` before opening ADRs and `plans/README.md` before historical plans.
 When `knowledge/` is activated, read its index and synthesized modules before raw sources.
 

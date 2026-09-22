@@ -22,6 +22,20 @@ The template deliberately contains no project plan instances in a derived projec
 plans and ADRs when the objective planning triggers apply; direct localized work can proceed as
 Level 0 and bounded durable choices can be recorded as Level 1 decisions.
 
+## Context maintenance
+
+The repository includes a portable skill at
+[.agents/skills/context-maintenance/SKILL.md](.agents/skills/context-maintenance/SKILL.md).
+It runs within the current task when context maintenance is requested and needs no
+extra installation or background agent. Examples:
+
+- `$context-maintenance audit this project's startup context` reports findings only.
+- `$context-maintenance clean up this project's startup context` preserves originals,
+  condenses current context, and verifies references and unresolved decisions.
+
+The skill and its relative references travel with a copied template or cloned
+repository. Later template updates require deliberate adoption in existing projects.
+
 ## How Governance Works
 
 Authority descends from human decisions to accepted project truth, approved plans, proposals and
@@ -53,9 +67,9 @@ python scripts/check_governance.py
 ```
 
 The validation scripts check core structure, the selected profile, lifecycle/directory consistency,
-closure metadata, index entries, both skill bundles, and whether application code has appeared
-before application validation is configured. CI installs the same template-tooling dependency group
-and runs both checks. Before executable code is merged, configure exact stack-specific commands in
+closure metadata, index entries, and whether application code has appeared before application
+validation is configured. CI installs the same template-tooling dependency group and runs the
+governance check and its profile tests. Before executable code is merged, configure exact stack-specific commands in
 the validation contract and replace the deliberate CI failure placeholder.
 
 `CODEOWNERS` establishes review ownership but does not itself enforce approval. Personalize it and
