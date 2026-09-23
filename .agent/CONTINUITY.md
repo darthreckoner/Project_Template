@@ -29,3 +29,9 @@
 - Bundled skill: `context-maintenance` provides portable context audits and cleanup.
   Other skills are added per project when needed. Keep routine context rules in
   `docs/ENGINEERING_RULES.md`; load the skill only for maintenance requests.
+- Workflow prompt (2026-09-23): revised `docs/codex_workflow_improvement_prompt.md`
+  for source templates, new projects, and incremental adoption in existing repos.
+  Load only when reviewing or explicitly requesting workflow-improvement planning.
+  Scope is a local documentation revision; no workflow, skill, or pilot was activated.
+  Governance validation and independent document review passed; launch examples
+  remain unexecuted. No commit or push was requested.
